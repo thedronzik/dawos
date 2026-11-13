@@ -1,0 +1,47 @@
+{
+  "name": "dawos",
+  "version": "0.2.1",
+  "description": "AWOS workflow for DeepSeek Harness: /dawos-* commands that drive the AWOS pipeline over context/ (specs, product, sources). Reads .awos/ as an optional proxy layer, never depends on Claude-specific files.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "prompts",
+    "templates",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md",
+    "NOTICE",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "awos",
+    "dawos",
+    "spec-driven-development",
+    "planning"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-llm": "*"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node test/verify.mjs"
+  }
+}

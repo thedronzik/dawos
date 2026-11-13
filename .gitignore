@@ -1,0 +1,11 @@
+node_modules/
+.dawos/
+*.log
+.DS_Store
+Thumbs.db
+
+# Локальные артефакты проверки на конкретных проектах — в репозиторий не попадают.
+/local/
+/test/fixtures-local/
+*.local.md
+*.local.json

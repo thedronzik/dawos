@@ -1,0 +1,27 @@
+# dawos bundle patch: mounts the plugin row into the DSH composition.
+#
+# Install: `dsh plugin --profile <name> add dawos`
+# Manual:  add this insert to the profile cordis.patch.yml.
+- insert:
+    - id: dawos
+      name: 'dawos'
+      config:
+        # Где лежат артефакты (структура AWOS). Пути относительны рабочего каталога сессии.
+        specsDir: 'context/spec'
+        productDir: 'context/product'
+        sourcesDir: 'context/sources'
+        # Состояние плагина (активная спека). Не попадает в context/.
+        stateFile: '.dawos/state.json'
+        # Читать .awos/commands/*.md и .awos/templates/*, если они есть в проекте.
+        # false = всегда использовать встроенные промпты и шаблоны.
+        proxyProjectFiles: true
+        # Проектный скрипт создания папки спеки (прокси). Если файла нет —
+        # плагин создаёт каталог сам: <номер> <slug> или автономер.
+        specDirScript: '.awos/scripts/create-spec-directory.sh'
+        # bash для скрипта проекта; пусто = искать Git for Windows.
+        bashPath: ''
+        # Отправлять промпт модели сразу после вызова команды.
+        autoRun: true
+        # Информационные команды (/dawos, /dawos-new, /dawos-status) дублируют
+        # результат в чат: в DSH 0.2.x текст результата команды не виден в транскрипте.
+        statusViaModel: true
